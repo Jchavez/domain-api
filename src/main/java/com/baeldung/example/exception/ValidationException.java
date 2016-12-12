@@ -1,4 +1,4 @@
-package com.oneandone.domains.exception;
+package com.baeldung.example.exception;
 
 public class ValidationException extends RuntimeException {
 

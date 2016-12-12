@@ -1,4 +1,4 @@
-package com.oneandone.domains.model;
+package com.baeldung.example.model;
 
 import org.springframework.hateoas.ResourceSupport;
 

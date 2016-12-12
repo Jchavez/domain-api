@@ -1,15 +1,17 @@
-package com.oneandone.domains.service;
+package com.baeldung.example.service;
 
-import com.oneandone.domains.model.Domain;
-import com.oneandone.domains.validator.DomainValidator;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.baeldung.example.model.Domain;
+import com.baeldung.example.validator.DomainValidator;
 
 @Service
 public class DomainService {

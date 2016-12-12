@@ -1,8 +1,9 @@
-package com.oneandone.domains.validator;
+package com.baeldung.example.validator;
 
-import com.oneandone.domains.exception.ValidationException;
-import com.oneandone.domains.model.Domain;
 import org.springframework.stereotype.Component;
+
+import com.baeldung.example.exception.ValidationException;
+import com.baeldung.example.model.Domain;
 
 @Component
 public class DomainValidator {

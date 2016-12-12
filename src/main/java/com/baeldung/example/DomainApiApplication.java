@@ -1,15 +1,16 @@
-package com.oneandone.domains;
+package com.baeldung.example;
 
-import com.oneandone.domains.model.Domain;
+import static org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType.HAL;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType.HAL;
+import com.baeldung.example.model.Domain;
 
 @SpringBootApplication
 @EnableHypermediaSupport(type = HAL)

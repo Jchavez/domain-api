@@ -1,19 +1,27 @@
-package com.oneandone.domains.controller;
+package com.baeldung.example.controller;
 
-import com.oneandone.domains.exception.ValidationException;
-import com.oneandone.domains.model.Domain;
-import com.oneandone.domains.service.DomainService;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
+
+import java.util.Optional;
+import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Optional;
-import java.util.Set;
-
-import static org.springframework.web.bind.annotation.RequestMethod.*;
+import com.baeldung.example.exception.ValidationException;
+import com.baeldung.example.model.Domain;
+import com.baeldung.example.service.DomainService;
 
 @RestController
 @RequestMapping(value = "domains")
