@@ -26,14 +26,14 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.example.model.Domain;
+import com.baeldung.example.model.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = DomainApiApplication.class)
+@SpringApplicationConfiguration(classes = UserApiApplication.class)
 @WebAppConfiguration
-public class DomainApiApplicationTests {
+public class UserApiApplicationTests {
 
     @Rule
     public final RestDocumentation restDocumentation = new RestDocumentation("target/generated-snippets");
@@ -54,125 +54,125 @@ public class DomainApiApplicationTests {
     }
 
     @Test
-    public void shouldGetDomain() throws Exception {
-        mockMvc.perform(get("/domains/example.com/")
+    public void shouldGetUser() throws Exception {
+        mockMvc.perform(get("/users/example.com/")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andDo(document("domain-get-success",
+                .andDo(document("user-get-success",
                         preprocessResponse(prettyPrint()),
                         responseFields(
-                                fieldWithPath("name").description("The domain name"),
-                                fieldWithPath("tld").description("The tld of the domain"),
-                                fieldWithPath("expirationDate").description("The date on which the domain will expire"),
-                                fieldWithPath("autorenewal").description("The flag that tells if the domain will renew at the expiration date or not"))));
+                                fieldWithPath("name").description("The user name"),
+                                fieldWithPath("tld").description("The tld of the user"),
+                                fieldWithPath("expirationDate").description("The date on which the user will expire"),
+                                fieldWithPath("autorenewal").description("The flag that tells if the user will renew at the expiration date or not"))));
     }
 
     @Test
-    public void shouldGetDomainNotFound() throws Exception {
-        mockMvc.perform(get("/domains/notfounddomain.com/")
+    public void shouldGetUserNotFound() throws Exception {
+        mockMvc.perform(get("/users/notfounduser.com/")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
-                .andDo(document("domain-get"));
+                .andDo(document("user-get"));
     }
 
     @Test
-    public void shouldUpdateDomain() throws Exception {
-        mockMvc.perform(put("/domains/example.com/")
+    public void shouldUpdateUser() throws Exception {
+        mockMvc.perform(put("/users/example.com/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(existingDomainAsString())).andExpect(status().isOk())
-                .andDo(document("domain-put",
+                .content(existingUserAsString())).andExpect(status().isOk())
+                .andDo(document("user-put",
                         preprocessResponse(prettyPrint()),
                         responseFields(
-                                fieldWithPath("name").description("The domain name"),
-                                fieldWithPath("tld").description("The tld of the domain"),
-                                fieldWithPath("expirationDate").description("The date on which the domain will expire"),
-                                fieldWithPath("autorenewal").description("The flag that tells if the domain will renew at the expiration date or not"))));
+                                fieldWithPath("name").description("The user name"),
+                                fieldWithPath("tld").description("The tld of the user"),
+                                fieldWithPath("expirationDate").description("The date on which the user will expire"),
+                                fieldWithPath("autorenewal").description("The flag that tells if the user will renew at the expiration date or not"))));
     }
 
     @Test
-    public void shouldUpdateDomainNotFound() throws Exception {
-        mockMvc.perform(put("/domains/notfounddomain.com/")
+    public void shouldUpdateUserNotFound() throws Exception {
+        mockMvc.perform(put("/users/notfounduser.com/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(newDomainAsString()))
+                .content(newUserAsString()))
                 .andExpect(status().isNotFound())
-                .andDo(document("domain-put"));
+                .andDo(document("user-put"));
     }
 
     @Test
-    public void shouldUpdateDomainBadRequest() throws Exception {
-        mockMvc.perform(put("/domains/example.com/")
+    public void shouldUpdateUserBadRequest() throws Exception {
+        mockMvc.perform(put("/users/example.com/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(newDomainAsString()))
+                .content(newUserAsString()))
                 .andExpect(status().isBadRequest())
-                .andDo(document("domain-put"));
+                .andDo(document("user-put"));
     }
 
     @Test
-    public void shouldCreateDomain() throws Exception {
-        String content = newDomainAsString();
-        mockMvc.perform(post("/domains")
+    public void shouldCreateUser() throws Exception {
+        String content = newUserAsString();
+        mockMvc.perform(post("/users")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .content(content))
                 .andExpect(status().isCreated())
-                .andDo(document("domain-post"));
+                .andDo(document("user-post"));
     }
 
     @Test
-    public void shouldCreateDomainBadRequest() throws Exception {
-        String content = domainWithNullDomainNameAsString();
-        mockMvc.perform(post("/domains")
+    public void shouldCreateUserBadRequest() throws Exception {
+        String content = userWithNullUserNameAsString();
+        mockMvc.perform(post("/users")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .content(content))
                 .andExpect(status().isBadRequest())
-                .andDo(document("domain-post"));
+                .andDo(document("user-post"));
     }
 
     @Test
-    public void shouldCreateDomainConflict() throws Exception {
-        String content = existingDomainAsString();
-        mockMvc.perform(post("/domains")
+    public void shouldCreateUserConflict() throws Exception {
+        String content = existingUserAsString();
+        mockMvc.perform(post("/users")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .content(content))
                 .andExpect(status().isConflict())
-                .andDo(document("domain-post"));
+                .andDo(document("user-post"));
     }
 
     @Test
-    public void shouldDeleteDomain() throws Exception {
-        mockMvc.perform(delete("/domains/example.nyc/")).andExpect(status().isNoContent())
-                .andDo(document("domain-delete"));
+    public void shouldDeleteUser() throws Exception {
+        mockMvc.perform(delete("/users/example.nyc/")).andExpect(status().isNoContent())
+                .andDo(document("user-delete"));
     }
 
     @Test
-    public void shouldDeleteDomainNotFound() throws Exception {
-        mockMvc.perform(delete("/domains/notfounddomain.com/")).andExpect(status().isNotFound())
-                .andDo(document("domain-delete"));
+    public void shouldDeleteUserNotFound() throws Exception {
+        mockMvc.perform(delete("/users/notfounduser.com/")).andExpect(status().isNotFound())
+                .andDo(document("user-delete"));
     }
 
-    private String domainWithNullDomainNameAsString() {
-        return domainAsString(null);
+    private String userWithNullUserNameAsString() {
+        return userAsString(null);
     }
 
-    private String existingDomainAsString() {
-        return domainAsString("example.com");
+    private String existingUserAsString() {
+        return userAsString("example.com");
     }
 
-    private String newDomainAsString() {
-        return domainAsString("thisisanewdomain.com");
+    private String newUserAsString() {
+        return userAsString("thisisanewuser.com");
     }
 
-    private String domainAsString(String domainName) {
+    private String userAsString(String userName) {
         try {
-            Domain domain = new Domain(domainName, "com", "2016-04-01", false);
-            return objectMapper.writeValueAsString(domain);
+            User user = new User(userName, "com", "2016-04-01", false);
+            return objectMapper.writeValueAsString(user);
         } catch (JsonProcessingException e) {
-            throw new RuntimeException("Failed to create domain");
+            throw new RuntimeException("Failed to create user");
         }
     }
 }

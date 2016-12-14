@@ -1,5 +1,5 @@
-= RESTful Domains API Guide
-Adrian Enciu;
+= RESTful Users API Guide
+Baeldung Example;
 :doctype: book
 :icons: font
 :source-highlighter: highlightjs
@@ -74,22 +74,22 @@ not create URIs themselves, instead they should use the above-described links to
 
 
 
-[[resources-domain]]
-== Domain
+[[resources-user]]
+== User
 
-The domain resource is used to show domains available in the system.
+The user resource is used to show users available in the system.
 
 
 
-[[resources-domain-get]]
-=== Retrieving a domain
+[[resources-user-get]]
+=== Retrieving a user
 
-A `GET` request is used to get a specific domain
+A `GET` request is used to get a specific user
 
 ==== Response structure
 
-include::{snippets}/domain-get-success/response-fields.adoc[]
+include::{snippets}/user-get-success/response-fields.adoc[]
 
 ==== Example response
 
-include::{snippets}/domain-get-success/http-response.adoc[]
+include::{snippets}/user-get-success/http-response.adoc[]

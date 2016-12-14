@@ -7,7 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Domain extends ResourceSupport {
+public class User extends ResourceSupport {
 
     private static final String DAT_FORMAT = "yyyy-MM-dd";
 
@@ -16,10 +16,10 @@ public class Domain extends ResourceSupport {
     private Date expirationDate;
     private boolean autorenewal;
 
-    public Domain() {
+    public User() {
     }
 
-    public Domain(String name, String tld, String expirationDate, boolean autorenewal) {
+    public User(String name, String tld, String expirationDate, boolean autorenewal) {
         this.name = name;
         this.tld = tld;
         this.expirationDate = parseDate(expirationDate);
@@ -73,12 +73,12 @@ public class Domain extends ResourceSupport {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
-        Domain domain = (Domain) o;
+        User user = (User) o;
 
-        if (autorenewal != domain.autorenewal) return false;
-        if (name != null ? !name.equals(domain.name) : domain.name != null) return false;
-        if (tld != null ? !tld.equals(domain.tld) : domain.tld != null) return false;
-        return !(expirationDate != null ? !expirationDate.equals(domain.expirationDate) : domain.expirationDate != null);
+        if (autorenewal != user.autorenewal) return false;
+        if (name != null ? !name.equals(user.name) : user.name != null) return false;
+        if (tld != null ? !tld.equals(user.tld) : user.tld != null) return false;
+        return !(expirationDate != null ? !expirationDate.equals(user.expirationDate) : user.expirationDate != null);
 
     }
 
@@ -94,7 +94,7 @@ public class Domain extends ResourceSupport {
 
     @Override
     public String toString() {
-        return "Domain{" +
+        return "User{" +
                 "name='" + name + '\'' +
                 ", tld='" + tld + '\'' +
                 ", expirationDate=" + expirationDate +
