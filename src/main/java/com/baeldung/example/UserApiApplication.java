@@ -23,12 +23,13 @@ public class UserApiApplication {
     @Bean
     public Map<String, User> configuredUsers() {
         Map<String, User> configuredUsers = new HashMap<>();
-        User user1 = new User("Juan", "com", "2016-09-12", Boolean.TRUE);
-        User user2 = new User("Pedro", "nyc", "2016-010-22", Boolean.FALSE);
-        User user3 = new User("Luis", "london", "2016-11-30", Boolean.FALSE);
-        User user4 = new User("Rob", "paris", "2016-02-06", Boolean.TRUE);
-        User user5 = new User("Bob", "camera", "2016-05-17", Boolean.TRUE);
-        User user6 = new User("John", "photography", "2016-02-20", Boolean.FALSE);
+        User user1 = new User("example.com", "com", "2016-09-12", Boolean.TRUE);
+        User user2 = new User("example.nyc", "nyc", "2016-010-22", Boolean.FALSE);
+        User user3 = new User("example.london", "london", "2016-11-30", Boolean.FALSE);
+        User user4 = new User("example.paris", "paris", "2016-02-06", Boolean.TRUE);
+        User user5 = new User("example.camera", "camera", "2016-05-17", Boolean.TRUE);
+        User user6 = new User("example.photography", "photography", "2016-02-20", Boolean.FALSE);
+
 
         configuredUsers.put(user1.getName(), user1);
         configuredUsers.put(user2.getName(), user2);

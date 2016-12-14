@@ -1,4 +1,3 @@
-# user-api
+# Spring-Rest-Docs
 Example of how to use spring-rest-docs to generate your API documentation.
 
-The API in this example contains basic CRUD operations on users resources.
